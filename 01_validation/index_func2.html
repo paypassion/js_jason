@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #errorMessages {
+        color: crimson;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <h1>Validation function Structure</h1>
+    <form action="" id="regForm">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="userName" />
+      <br />
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="Email" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="Password" />
+      <button type="submit" id="submitBtn">Register</button>
+      <br />
+    </form>
+    <div id="errorMessages"></div>
+
+    <script src="./js/validation.js"></script>
+  </body>
+</html>

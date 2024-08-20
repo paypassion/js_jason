@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/myStyle.css">
+    <script>
+        function changeCtoF(celci) {
+            // let fahren = (celci *(9/5)) +32;
+            return (celci *(9/5)) +32; }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>섭씨(C)를 화씨(F)로</h1>
+        <form action="./index_.html" name="myForm">
+            <label for="">섭씨 : </label>
+            <input type="number" name="celci" id="">
+            <button type="submit">Change To Fahren</button>
+        </form>
+        
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const myForm = document.forms.myForm;
+            myForm.addEventListener("submit", (e) => {
+                e.preventDefault(); // submit은 이게 필수.
+                // const celci = document.forms.myForm.celci.value;
+
+                const fahren = changeCtoF(document.forms.myForm.celci.value);
+                console.log(fahren);
+
+                myForm.parentElement.innerHTML += `<p>Fahren: ${fahren}</p>`
+               
+            })
+
+        })
+    </script>
+</body>
+</html>

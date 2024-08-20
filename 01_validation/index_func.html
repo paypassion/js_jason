@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #errorMessages {
+        color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" id="regForm">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="userName" />
+      <br />
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="Email" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="Password" />
+      <button type="submit" id="submitBtn">Register</button>
+      <br />
+    </form>
+    <div id="errorMessages"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const regForm = document.getElementById("regForm");
+        const userName = document.getElementById("userName");
+        const email = document.getElementById("Email");
+        const password = document.getElementById("Password");
+        const errorMessages = document.getElementById("errorMessages");
+
+        let flag = true;
+   
+
+        function getErrorMessages(sign) {
+          let message= "<p>"
+          switch (sign) {
+            case 1:
+                message += "Username is not allowed Empty"
+              break;
+            case 2:
+                message += "Username should be above 8 and under 17"
+              break;
+            case 3:
+                message += "아이디에 공백 포함 ㄴㄴ"
+              break;
+            case 4:
+                message += "아이디에 영어랑 숫자 포함 하셈요!"
+              break;
+            case 5:
+                message += "이메일 형식 지키세요~ 알쥬"
+              break;
+            case 6:
+                message += "저희는 한메일 네이버 안 돼유~"
+              break;
+            case 7:
+                message += "비밀번호에 공백 포함 안 돼유~"
+              break;
+            case 8:
+                message += "비밀번호 영문자, 숫자, 특수문자 포함해야 돼유~"
+              break;    
+            default:
+              break;
+          }
+          message += "</p>"
+          return message;
+        }
+        function getUsernameValidation(userNameTrim) {
+          const userNamePattern = /^[a-zA-Z0-9]$/;
+          let sign = 0
+          if (userNameTrim == "") {
+            flag = false;
+            sign = 1;
+          } else if (userNameTrim.length < 8 || userNameTrim.length > 16) {
+            flag = false;
+            sign = 2;
+          } else if (userNameTrim.includes(" ")) {
+            flag = false;
+            sign = 3;
+          } else if (!userNamePattern.test(userNameTrim)) {
+            flag = false;
+            sign = 4;
+          }
+          return getErrorMessages(sign)
+        }
+
+        function getEmailValidation(emailTrim) {
+          const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          let sign = 0
+          if (!emailPattern.test(emailTrim)) {
+            flag = false;
+            sign = 5;
+          } else if (
+            emailTrim.includes("@hanmail.net") ||
+            emailTrim.includes("@naver.com")
+          ) {
+            flag = false;
+            sign = 6;
+          }
+          return getErrorMessages(sign)
+        }
+
+        function getPasswordValidation(passwordTrim) {
+          const passwordPattern =
+            /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+            let sign = 0
+          if (passwordTrim.includes(" ")) {
+            flag = false;
+            sign = 7;
+          } else if (!passwordPattern.test(passwordTrim)) {
+            flag = false;
+            sign = 8;
+          }
+          return getErrorMessages(sign)
+        }
+        document.getElementById("submitBtn").addEventListener("click", (e) => {
+          errorMessages.innerHTML = "";
+          let errMsg = ""
+
+          let userNameTrim = userName.value.trim();
+          errMsg += getUsernameValidation(userNameTrim);
+          
+          let emailTrim = email.value.trim();
+          errMsg += getEmailValidation(emailTrim);
+          
+          let passwordTrim = password.value.trim();
+          errMsg += etPasswordValidation(passwordTrim)
+
+          if (!flag) {
+            e.preventDefault();
+            errorMessages.innerHTML = errMsg
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/myStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Checkbox, Radio checked Event property(attribute)</h1>
+        <form action="">
+            <ul id="myConf">            
+                <li><input type="checkbox" name="subjects" id="" value="html"> HTML</li>
+                <li><input type="checkbox" name="subjects" id="" value="css"> CSS</li>
+                <li><input type="checkbox" name="subjects" id="" value="js"> JS</li>
+            </ul>
+            <hr>
+            <ol id="myFavor">
+                <li><input type="radio" name="favor" id="" value="html"> HTML</li>
+                <li><input type="radio" name="favor" id="" value="css"> CSS</li>
+                <li><input type="radio" name="favor" id="" value="js"> JS</li>
+            </ol>
+        </form>
+    </div>
+    <h1 id="result"></h1>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const checkValues = []
+            Array.from(document.querySelectorAll("input[name='subjects']"))
+            .forEach((elem) => {
+                elem.addEventListener("click", (e) => {
+                    // console.log(e.target.value);
+                     
+                     if(e.target.checked) {
+                        console.log(e.target.value);
+                        // checkValues.push(e.target.checkValues)
+                        document.getElementById("result").innerText = e.target.value
+                     } else {
+                        document.getElementById("result").innerText = ""
+                     }
+                })
+            })
+            // const myConf = document.getElementById("myConf");
+            // const myFavor = document.getElementById("myFavor");
+
+            // const myConfValues = myConf.querySelector("input[name='subjects']:checked"); //psuedo Selecor
+            // console.log(myConfValues);
+            // const myFavorValue = myFavor.querySelector("input[name='favor']:checked");
+            // console.log(myFavorValue);
+            
+            
+        })
+    </script>
+</body>
+</html>

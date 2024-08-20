@@ -1,0 +1,10 @@
+#title:hover {
+    color: chocolate;
+    background-color: black;
+    text-shadow: 2px 2px 5px red;
+}
+.below-effect {
+    color: lightskyblue;
+    background-color: navy;
+    text-shadow: 2px 2px 5px red;
+}

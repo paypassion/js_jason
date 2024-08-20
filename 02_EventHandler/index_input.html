@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    </head>
+<body>
+
+    <div class="container">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="detail" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="detail" rows="3"></textarea>
+          </div>
+          <div id="display">
+          </div>
+    </div>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const email = document.getElementById("email");
+            const detail = document.getElementById("detail");
+            const display = document.getElementById("display");
+
+            email.addEventListener("input", () => {
+                // display.innerHTML = email.value;
+                // display.textContent = email.value;
+                detail.value = email.value;
+            }) 
+        })    
+    </script>
+</body>
+</html>

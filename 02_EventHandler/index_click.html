@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="KO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const clickBtn = document.getElementById("clickBtn"); 
+            const clickBtn2 = document.getElementById("clickBtn2"); 
+            const clickBtn3 = document.getElementById("clickBtn3"); 
+            const clickBtn4 = document.getElementById("clickBtn4"); 
+            const reslut = document.getElementById("result")
+
+            clickBtn.addEventListener( "click", () => {
+                reslut.innerHTML = "<strong>Clicked Btn</strong>"
+            })
+            clickBtn3.addEventListener( "click", () => {
+                reslut.innerHTML = "<strong>Clicked Btn3</strong>"
+            })
+            clickBtn2.addEventListener( "click", () => {
+                reslut.innerHTML += "<strong>Clicked Btn2</strong>"
+            })
+            clickBtn4.addEventListener( "click", () => {
+                reslut.innerText += "<strong>Clicked Btn4</strong>"
+            })
+        })
+    </script>
+</head>
+<body>
+    <button type="button" id="clickBtn">Click Me~!</button>
+    <button type="button" id="clickBtn2">Click Me~!</button>
+    <button type="button" id="clickBtn3">Click Me~!</button>
+    <button type="button" id="clickBtn4">Click Me~!</button>
+    <div id="result"></div>
+</body>
+</html>

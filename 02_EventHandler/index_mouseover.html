@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/myStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Mouseover Event Title</h1>
+        <h1 id="below">Mouseover Event Below</h1>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const title = document.getElementById("title");
+            const below = document.getElementById("below");
+
+            title.addEventListener("mouseover", () => {
+                below.classList.add("below-effect")
+            })
+            title.addEventListener("mouseout", () => {
+                below.classList.remove("below-effect")
+            })
+        })
+    </script>
+</body>
+</html>

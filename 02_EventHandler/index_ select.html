@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/myStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Get Selected value from select tag</h1>
+        <select name="mysel" id="mysel">
+            <option value="">Please Select</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">Javascript</option>
+            <option value="php">PHP</option>
+            <option value="mysql">MYSQL</option>
+        </select>
+    </div>
+    <h1 id="changedValue"></h1>
+    <script>
+        const selElem = document.getElementById("mysel")
+        selElem.addEventListener("change", (e) => {
+            if (selElem.value == "") {
+                alert("You must select one value from select box!")
+            }
+            const selectedValue = selElem.options[selElem.selectedIndex].value 
+            document.getElementById("changedValue").innerText = selectedValue
+        })
+    </script>
+</body>
+</html>

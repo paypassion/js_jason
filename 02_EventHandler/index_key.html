@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/myStyle.css">
+    <script>
+        document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            alert("어디서 오른쪽 클릭을!")
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Key Event</h1>
+        <ul>
+            <li>keypress : 키를 누르는 순간</li>
+            <li>keydown : 키를 누르는 동안</li>
+            <li>keyup : 키가 다시 올라온 순간</li>
+            <li>event.key, event.code로 값을 알 수 있다.</li>
+        </ul>
+        <ol id="print_keypress">
+            <li>e.type :</li>
+            <li>e.key :</li>
+            <li>e.code :</li>
+        </ol>
+        <ol id="print_keydown">
+            <li>e.type :</li>
+            <li>e.key :</li>
+            <li>e.code :</li>
+        </ol>
+        </ol>
+        <ol id="print_keyup">
+            <li>e.type :</li>
+            <li>e.key :</li>
+            <li>e.code :</li>
+        </ol>
+        </ol>
+    </div>
+    키 이벤트 알아보기 : <input type="text" name="" id="inputs">
+    <script>
+        const keypressOL = document.getElementById("print_keypress")
+        const keydownOL = document.getElementById("print_keydown")
+        const keyupOL = document.getElementById("print_keyup")
+
+        document.getElementById("inputs").addEventListener("keypress", (e) => {
+            keypressOL.innerHTML = `<li>e.type :&nbsp</li>
+                                    <li>e.key :&nbsp</li>
+                                    <li>e.code :&nbsp</li>`
+            Array.from(document.getElementById("print_keypress").children)
+            .forEach((elem, idx) => {
+                switch (idx) {
+                    case 0:
+                        elem.innerText += e.type;
+                        break;
+                    case 1:
+                        elem.innerText += e.key;
+                        break;
+                    case 2:
+                        elem.innerText += e.code;
+                        break;    
+                    default:
+                        break;
+                }
+            })
+        }) 
+        document.getElementById("inputs").addEventListener("keydown", (e) => {
+            keydownOL.innerHTML = `<li>e.type :&nbsp</li>
+                                    <li>e.key :&nbsp</li>
+                                    <li>e.code :&nbsp</li>`
+            Array.from(document.getElementById("print_keydown").children)
+            .forEach((elem, idx) => {
+                switch (idx) {
+                    case 0:
+                        elem.innerText += e.type;
+                        break;
+                    case 1:
+                        elem.innerText += e.key;
+                        break;
+                    case 2:
+                        elem.innerText += e.code;
+                        break;    
+                    default:
+                        break;
+                }
+            })
+        }) 
+        document.getElementById("inputs").addEventListener("keyup", (e) => {
+            keyupOL.innerHTML = `<li>e.type :&nbsp</li>
+                                    <li>e.key :&nbsp</li>
+                                    <li>e.code :&nbsp</li>`
+            for( let elem of (document.getElementById("print_keyup").children)) {
+                let text = elem.innerText;
+                if(text.includes("e.type")) {
+                    elem.innerText += e.type;
+                } 
+                if (text.includes("e.key")) {
+                    elem.innerText += e.key
+                }
+                if (text.includes("e.code")) {
+                    elem.innerText += e.code
+                }
+            }
+        }) 
+    </script>
+</body>
+</html>

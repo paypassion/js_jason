@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .weak {
+            color: red
+        }
+
+        .normal {
+            color: yellow
+        }
+
+        .strong {
+            color: green;
+        }
+    </style>
+    </head>
+<body>
+
+    <div class="container">
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="detail" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="detail" rows="3"></textarea>
+          </div>
+          <div id="display">
+          </div>
+    </div>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const password = document.getElementById("password");
+            const detail = document.getElementById("detail");
+            const display = document.getElementById("display");
+
+            password.addEventListener("input", () => {
+                let pwdValue = password.value;
+                detail.value = pwdValue;
+                const strength = ["약함", "보통", "강함"];
+                const pattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/;
+
+                if (pwdValue.length < 8) {
+                    display.innerHTML = strength[0];
+                    //약함의 조건 설정 : 8자 미만
+                    display.className = "text-danger"
+                } else if (pattern.test(pwdValue)) {
+                    display.innerHTML = strength[2];
+                    //보통의 조건 설정 : 영문 숫자 특수 문자 포함
+                    display.className = "text-success"
+                } else {
+                    display.innerHTML = strength[1];
+                    //강함의 조건 설정 : 영문 숫자 포함
+                    display.className = "text-warning" 
+                }
+
+                
+
+                
+
+                //결과 출력
+            }) 
+        })    
+    </script>
+</body>
+</html>
